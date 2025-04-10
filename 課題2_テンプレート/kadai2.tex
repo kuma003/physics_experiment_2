@@ -1,0 +1,140 @@
+\documentclass[uplatex,dvipdfmx,a4j,12pt]{jsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{url}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{paralist}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+\setlist[description]{parsep=5pt}
+\setlist[enumerate]{parsep=5pt}
+
+% 半角文字のパーセント、より右側は、コメントとして扱われます。
+
+% タイトルページの内容をここで記述します。
+\title{
+  物理学実験 II レポート\\    % \\ は、強制的に改行するコマンドです。
+  課題2 「光学」
+  }
+\author{
+  実験回： 第ｘ回 \\
+  氏名： \\
+  実験者番号： \\
+\\
+  共同実験者：
+  }
+  
+\date{実験日：2025年 x月 x日～ x月 x日 \\
+提出日：2025年 x月 x日}  % 実験日と、提出日を記入して下さい
+
+
+% ここから本文が始まります。
+\begin{document}
+
+% 上で設定したタイトルページの情報は、\maketitle があって始めて、コンパイル後に表示されます。
+\maketitle
+
+% レポートのフィードバックのコメントを希望しない場合には、
+% 51行目から58行目までをコメントアウト（行頭に%を入れる）。
+% コメントを希望する場合は、何について聞きたいかを具体的に書いて下さい。
+
+% 縦方向の空白を挿入するコマンドです。em は行の高さ分、を意味する単位です。
+\vspace{2em}
+\begin{center}
+    \begin{minipage}{0.5\linewidth}
+        % 締め切り後提出のレポートには基本的にはコメントを返信しません。
+        % 詳細な採点結果等は返信することができません。
+        例: レポートのコメントを希望します。
+
+        具体的には、○○について評価を下さい。
+    \end{minipage}
+\end{center}
+
+\vspace{5em}  
+
+
+% 概要は論文・レポート全体を一つの段落にまとめたものです。
+% 物理の分野では、概要では段落分けをしません。
+\begin{abstract}
+    \textcolor{red}{このテンプレートにある指示文章は全て削除し、自分で書いた文章に差し替えること。残っていた場合は読みやすさを損ねるため減点とする。}
+    （概要ではレポートの概要を簡潔に記述せよ。例えば、以下のようなものである。）
+    ○○の目的のために、■■の実験を行った。
+    その結果△△であることが確かめられた。
+\end{abstract}
+
+% 強制的に改ページを行う
+\newpage
+
+% 提出するレポートでは、以下の指示文が掲載されないように、コメントアウトするか消すようにしてください。
+% 指示文はじめ--------------------------------------------------
+以下に記載されている書式はあくまで参考例の1つであり、必ずしもこの形式に従う必要はありません。レポート執筆者自身が実験結果や考察を整理しやすい形式、読者（教員）が読みやすい形式であればよいですが、\textbf{「目的」、「原理」、「方法」、「結果」、「考察」、「まとめ」}を（解いた場合には「課題」も）最低限含むようにしてください。
+
+章立てについては、以下に示すような分け方がわかりやすいです。各実験や各テーマごとに原理、結果、方法、考察を記述すると、階層構造がわかりやすく、内容の整理がしやすいです。（目的についても、各項目ごとに記載して構いませんが、レポートの最初には必ず課題全体の背景や目的を簡潔に示してください。）
+
+\subsubsection*{例1: 実験別で分ける場合}
+    \begin{itemize}
+        \item 実験1. ピンホールによる回折パターンの測定
+        \item 実験2. フレネル回折
+        \item 実験3. マイケルソン干渉計による分光
+        \item 実験4. 計算ホログラフィ
+        \item 実験5. 物体のホログラフィ
+    \end{itemize}
+
+\subsubsection*{例2: テーマ別で分ける場合}
+    \begin{itemize}
+        \item \S 1. 光波
+        \item \S 2. 光の回折
+        \item \S 3. 光の干渉とコヒーレンス
+        \item \S 4. 空間光変調器を用いた回折実験
+        \item \S 5. ホログラフィ
+    \end{itemize}
+
+\newpage
+% 指示文おわり--------------------------------------------------
+
+%簡潔に記述すること。
+\section{目的}
+
+% 以下の章立ては一例であり、自由に変えてもよいです。
+\section{例: 実験1. ピンホールによる... or 光波}
+\subsection{原理}
+
+\subsection{方法}
+
+\subsection{結果}
+
+\subsection{考察}
+\textcolor{red}{\textreferencemark この第2章のような章立てを各実験や各テーマごとに行ってください。}
+
+\section{課題}
+
+%簡潔に記述すること。
+\section{結論}
+
+\newpage
+
+% レポート執筆に際して調べた文献を必ず記述すること。他にも参考にした文献があれば記述すること。
+\begin{thebibliography}{9}
+
+    \bibitem{bunken1}
+        A. Einstein, B. Podolsky, and N. Rosen, 
+        Phys. Rev. \textbf{47}, (1935) 777.
+        % いわゆるEPRパラドックスと呼ばれる量子力学に関する論文
+
+    \bibitem{bunnken2}
+        J.J. Aubert \textit{et al.},
+        Phys. Lett. B \textbf{123} (1983) 275.
+        % いわゆるEMC効果と呼ばれる現象についての実験の論文
+    
+\end{thebibliography}
+
+\end{document}

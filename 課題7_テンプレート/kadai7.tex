@@ -1,0 +1,134 @@
+\documentclass[uplatex,dvipdfmx,a4j,12pt]{jsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{url}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{paralist}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+\setlist[description]{parsep=5pt}
+\setlist[enumerate]{parsep=5pt}
+
+% 半角文字のパーセント、より右側は、コメントとして扱われます。
+
+% タイトルページの内容をここで記述します。
+\title{
+  物理学実験IIレポート\\    % \\ は、強制的に改行するコマンドです。
+  課題7 「γ線計測の基礎と応用」
+  }
+\author{
+  実験回： 第ｘ回 \\
+  氏名： \\
+  実験者番号：
+  \\
+  共同実験者：
+  }
+\date{
+  実験日：2024年 x月 x日～ x月 x日 \\
+  提出日：2024年 x月 x日}  % 実験日と、提出日を記入して下さい
+
+% ここから本文が始まります。
+\begin{document}
+
+% 上で設定したタイトルページの情報は、\maketitle があって始めて、コンパイル後に表示されます。
+\maketitle
+
+% レポートのフィードバックのコメントを希望しない場合には、
+% 48行目から55行目までをコメントアウト（行頭に%を入れる）。
+% コメントを希望する場合は、何について聞きたいかを具体的に書いて下さい。
+
+% 縦方向の空白を挿入するコマンドです。em は行の高さ分、を意味する単位です。
+\vspace{2em}
+\begin{center}
+    \begin{minipage}{0.5\linewidth}
+        レポートのコメントを希望します。
+
+        具体的には、○○について評価を下さい。
+    \end{minipage}
+\end{center}
+
+\vspace{5em}  
+
+
+% 概要は論文・レポート全体を一つの段落にまとめたものです。
+% 物理の分野では、概要では段落分けをしません。
+%
+\begin{abstract}
+    \textcolor{red}{このテンプレートにある指示文章は全て削除し、自分で書いた文章に差し替えること。残っていた場合は読みやすさを損ねるため減点とする。}
+    （概要ではレポートの概要を簡潔に記述せよ。例えば、以下のようなものである。）
+    ○○の目的のために、■■の実験を行った。
+    その結果△△であることが確かめられた。
+\end{abstract}
+
+% 強制的に改ページを行う
+\newpage
+
+
+\section{目的}
+この実験のねらいが何であるかを、テキストを参考に簡潔にまとめる。
+
+
+\section{原理}
+実験装置の形状、寸法、性能などを簡潔に記載する。
+ただし、工夫した部分がある場合などは明確に記述する。
+
+\section{実験1}
+
+\subsection{方法}
+
+\subsection{結果}
+
+\subsection{考察}
+
+
+\section{実験2}
+
+\subsection{方法}
+
+\subsection{結果}
+
+\subsection{考察}
+
+
+\section{実験3}
+
+\subsection{方法}
+
+\subsection{結果}
+
+\subsection{考察}
+
+
+
+\section{設問への解答}
+
+
+\section{結論}
+
+結論の章では、実験目的を要約して記述し、それに対応する結論を最後に記述すること。
+
+% 参考文献は、各課題に合わせて必要なものに書き換えること
+\begin{thebibliography}{9}
+
+    \bibitem{bunken1}
+        A. Einstein, B. Podolsky, and N. Rosen, 
+        Phys. Rev. \textbf{47}, (1935) 777.
+        % いわゆるEPRパラドックスと呼ばれる量子力学に関する論文
+
+    \bibitem{bunnken2}
+        J.J. Aubert \textit{et al.},
+        Phys. Lett. B \textbf{123} (1983) 275.
+        % いわゆるEMC効果と呼ばれる現象についての実験の論文
+    
+\end{thebibliography}
+
+\end{document}

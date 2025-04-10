@@ -1,0 +1,4 @@
+PWD d:/FY2025 物理学実験Ⅱレポート テンプレート/00_LaTeXを用いたレポートの書き方の例
+INPUT c:/texlive/2021/texmf.cnf
+INPUT c:/texlive/2021/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2021/texmf-var/web2c/euptex/uplatex.fmt
