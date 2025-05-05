@@ -1,0 +1,180 @@
+\documentclass[uplatex,dvipdfmx,a4j,12pt]{jsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{url}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{paralist}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+\setlist[description]{parsep=5pt}
+\setlist[enumerate]{parsep=5pt}
+
+% 半角文字のパーセント、より右側は、コメントとして扱われます。
+
+% タイトルページの内容をここで記述します。
+\title{
+  物理学実験IIレポート\\    % \\ は、強制的に改行するコマンドです。
+  課題5 「電磁波の伝搬特性」
+  }
+\author{
+  実験回： 第1回 \\
+  氏名： 佐藤空馬\\
+  実験者番号：28
+  \\
+  共同実験者：福冨葵. 髙田和毅
+  }
+\date{
+  実験日：2024年 x月 x日～ x月 x日 \\
+  提出日：2024年 x月 x日}  % 実験日と、提出日を記入して下さい
+
+% ここから本文が始まります。
+\begin{document}
+
+% 上で設定したタイトルページの情報は、\maketitle があって始めて、コンパイル後に表示されます。
+\maketitle
+
+% レポートのフィードバックのコメントを希望しない場合には、
+% 48行目から55行目までをコメントアウト（行頭に%を入れる）。
+% コメントを希望する場合は、何について聞きたいかを具体的に書いて下さい。
+
+% 縦方向の空白を挿入するコマンドです。em は行の高さ分、を意味する単位です。
+% \vspace{2em}
+% \begin{center}
+%     \begin{minipage}{0.5\linewidth}
+%         レポートのコメントを希望します。
+
+%         具体的には、○○について評価を下さい。
+%     \end{minipage}
+% \end{center}
+
+\vspace{5em}  
+
+
+% 概要は論文・レポート全体を一つの段落にまとめたものです。
+% 物理の分野では、概要では段落分けをしません。
+%
+\begin{abstract}
+    % \textcolor{red}{このテンプレートにある指示文章は全て削除し、自分で書いた文章に差し替えること。残っていた場合は読みやすさを損ねるため減点とする。}
+    % （概要ではレポートの概要を簡潔に記述せよ。例えば、以下のようなものである。）
+    % ○○の目的のために、■■の実験を行った。
+    % その結果△△であることが確かめられた。
+\end{abstract}
+
+% 強制的に改ページを行う
+\newpage
+
+
+\section{目的}
+% この実験のねらいが何であるかを、テキストを参考に簡潔にまとめる。
+高周波回路は現代の通信技術において重要な役割を果たすだけでなく, より高精度な実験・測定を行うための基礎技術でもある.
+本実験では, 高周波領域で現れる電磁波の波動性に着目してその伝播特性を調べると共に, 素子のインピーダンスやそれに起因する信号の反射を調べることを目的とする.
+
+\section{原理}
+% 実験装置の形状、寸法、性能などを簡潔に記載する。
+% ただし、工夫した部分がある場合などは明確に記述する。
+\subsection{電磁波}
+電磁波は、電場と磁場が互いに直交しながら進行する波動である.
+
+Maxwellの方程式から, 真空中の電磁波に対する波動方程式は次のように表される:
+\begin{equation}
+    \nabla^2 \mathbf{E} - \frac{1}{c^2} \frac{\partial^2 \mathbf{E}}{\partial t^2} = 0
+\end{equation}
+ここで、$\mathbf{E}$は電場ベクトル, $c$は光速である.
+したがって, $x$方向に進行する電磁波は次のように表される:
+\begin{equation}
+    \mathbf{E}(x,t) = \mathbf{E_0} \exp{[i(kx - \omega t)]}
+\end{equation}
+ここで、$\mathbf{E_0}$は電場ベクトルの振幅, $k$は波数, $\omega$は角周波数である.
+磁場の波 (磁波) についても同様の式が成り立つ.
+
+次に, 誘電率$\epsilon$と透磁率$\mu$を持つ媒質中での伝播を考えると, 電磁波は次式で表される:
+\begin{equation}
+  \mathbf{E}_x = \mathbf{E_0} \exp{[]} \exp{[i(kx - \omega t)]}
+\end{equation}
+
+\subsection{ダイポールアンテナ}
+電流が時間的に変化する導体の周りには, 電場と磁場が発生する.
+また逆に, 電場と磁場の時間変化によって電流が生じる.
+これを利用して, 電磁波を放射・受信する素子をアンテナと呼ぶ.
+ここでは, 図\ref{fig:dipole_antenna}ダイポールアンテナについて考える.
+
+ダイポールアンテナの電流分布は次のように表される:
+\begin{equation}
+    I(x) = I_0 \left(1 - \frac{|z|}{d}\right)\sin\left(\omega t\right)
+\end{equation}
+ここで, $\omega$は印加する交流電源の角周波数である.
+このとき, 保存の式から電荷密度について次のように表される:
+\begin{equation}
+  \frac{\partial \rho}{\partial t}  = - \frac{\partial I}{\partial z} = \pm \frac{I_0}{d}\sin\left(\omega t\right)
+\end{equation}
+したがって, 
+\begin{equation}
+  \rho = \mp \frac{I_0}{\omega d}\cos\left(\omega t\right)
+\end{equation}
+
+このとき, 双極子モーメント$\mathbf{p}$は次のように表される:
+\begin{equation}
+  \mathbf{p} = \int \rho \mathbf{r} dV = \mp \frac{I_0}{\omega d}\int \cos\left(\omega t\right) \mathbf{r} dV
+  = -\frac{I_0 d}{\omega}\cos\left(\omega t\right) \mathbf{e}_\mathrm{z}.
+\end{equation}
+
+ここで, 双極子から十分離れた点$\mathbf{r}$でのポインティングベクトル$\mathbf{S}$は次のように表される:
+\begin{equation}
+  \mathbf{S} = \frac{1}{\mu_0}\left(\mathbf{E} \times \mathbf{H}\right) =
+  \frac{\mu_0}{(4\pi)^2c} \frac{\ddot{p}(t)\sin^2\theta}{r^2}\mathbf{e}_\mathrm{r}
+\end{equation}
+ここで, $\theta$は位置$\mathbf{r}$と双極子$\mathbf{p}$のなす角度であり, $\mathbf{e}_\mathrm{r}$は位置ベクトルの単位ベクトルである.
+したがって, 電磁波のエネルギー流束は次のように表される:
+\begin{equation}
+  \mathbf{S} = \frac{\mu_0}{(4\pi)^2c} \frac{\sin^2\theta}{r^2}(I_0 d \omega)^2 \cos^2\left(\omega t\right)\,\mathbf{e}_\mathrm{r}
+\end{equation}
+時間平均をとると,
+\begin{equation}
+  \langle \mathbf{S} \rangle = \frac{\mu_0}{(4\pi)^2c} \frac{\sin^2\theta}{r^2}(I_0 d \omega)^2 \frac{1}{2}\,\mathbf{e}_\mathrm{r}
+\end{equation}
+となる.
+
+したがって, 距離$r$離れた点で受信するとき, 受信側で得られる電力$P$は次のように表される:
+\begin{equation}
+  P \propto |\langle \mathbf{S} \rangle| \propto \frac{\sin^2\theta}{r^2}
+\end{equation}
+
+
+\section{方法}
+
+\section{結果}
+
+\section{考察}
+
+\section{設問への解答}
+
+
+\section{結論}
+
+実験目的を要約して記述し、それに対応する結論を最後に記述すること。
+
+% 参考文献は、各課題に合わせて必要なものに書き換えること
+\begin{thebibliography}{9}
+
+    \bibitem{bunken1}
+        A. Einstein, B. Podolsky, and N. Rosen, 
+        Phys. Rev. \textbf{47}, (1935) 777.
+        % いわゆるEPRパラドックスと呼ばれる量子力学に関する論文
+
+    \bibitem{bunnken2}
+        J.J. Aubert \textit{et al.},
+        Phys. Lett. B \textbf{123} (1983) 275.
+        % いわゆるEMC効果と呼ばれる現象についての実験の論文
+    
+\end{thebibliography}
+
+\end{document}
