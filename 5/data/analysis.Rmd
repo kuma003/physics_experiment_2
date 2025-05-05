@@ -4,7 +4,7 @@ output: html_document
 date: "2025-05-01"
 ---
 
-## パッケージ読み込み・諸定数定義
+# パッケージ読み込み・諸定数定義
 ```{r}
 library(readxl)
 library(tidyverse)
@@ -12,9 +12,35 @@ library(ggplot2)
 library(dplyr)
 ```
 
-## データ読み込み
+# データ読み込み
 ```{r}
+save_dir <- "5/data/img"
+path <- "5\\data\\pe2_exp5.xlsx"
 # excel fileのシートを列挙
-sheets <- excel_sheets("C:\\Users\\kuma2\\Documents\\pe_2\\5\\data\\pe2_exp5.xlsx")
+sheets <- excel_sheets(path)
 sheets
+```
+
+# 課題1
+## パワーメータによる測定
+```{r}
+data <- read_excel(path, sheet = "power cable1")
+freq <- data$`req [MHz]`
+a_power <- data$`A power [dBm]`
+power_ratio <- data$`B/A [dB]`
+decay_ratio <- data$`減衰率 [dBm^-1]`
+
+p <- ggplot(data, aes(x = freq, y = a_power)) +
+    geom_point() +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "A power [dBm]"
+    ) +
+    theme_light()
+ggsave(p, filename = file.path(save_dir, "power_vs_freq.pdf"), width = 250, height = 100, unit = "mm", dpi = 300)
+print(p)
+
+
+
 ```

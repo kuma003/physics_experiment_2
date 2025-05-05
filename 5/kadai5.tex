@@ -164,22 +164,97 @@ Maxwellの方程式から, 真空中の電磁波に対する波動方程式は�
 
 同軸ケーブルにおいては, 単位長さあたりのインダクタンス$L$, 単位長さあたりの静電容量$C$は次のように表される:
 \begin{equation}
-  L = \frac{\mu}{2\pi} \ln\left(D/d\right), \quad C = \frac{2\pi\varepsilon_r \varepsilon_0}{\ln\left(D/d\right) }
+  L = \frac{\mu_0}{2\pi} \ln\left(D/d\right), \quad C = \frac{2\pi\varepsilon_r \varepsilon_0}{\ln\left(D/d\right) }
 \end{equation}
 ここで, $D$は同軸ケーブルの外径, $d$は内径, $\varepsilon_r$は外部導体と中心導体の間の比誘電率である.
 
 したがって, 同軸ケーブル中の伝送速度は次のように表される:
 \begin{equation}
-  v = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{\mu_r}}
+  v = \frac{1}{\sqrt{LC}} = \frac{c}{\sqrt{\varepsilon}}
 \end{equation}
 
 \enskip
 
 また, 電磁波の特徴的な性質として, 異なる媒質へ入射したときの反射と透過がある.
 
-媒質1から媒質2へ入射したとき, 反射率$\Gamma$
+媒質1から媒質2へ入射したとき, 反射率$\Gamma$と透過率$T$は次のように表される:
+\begin{align}
+  \Gamma &= \frac{Z_2 - Z_1}{Z_2 + Z_1}, \label{eq:reflection}\\
+  T &= \frac{2Z_1}{Z_2 + Z_1}
+\end{align}
+ここで, $Z_1$は媒質1のインピーダンス, $Z_2$は媒質2のインピーダンスである．
+このことから，2媒質のインピーダンスが異なるときには，必ず反射が生じることが分かる．
+
+この結果として，信号線の末端に負荷を接続した場合においても，負荷のインピーダンスが信号線のインピーダンスと異なるときには反射が生じる．
+入力側のインピーダンスを$Z_0$，負荷のインピーダンスを$Z_L$とするとき，反射係数$\Gamma$は次のように式\eqref{eq:reflection}と同じ表式で表される:
+\begin{equation}
+  \Gamma = \frac{Z_L - Z_0}{Z_L + Z_0} \label{eq:reflection_2}
+\end{equation}
+
+抵抗器のインピーダンスは抵抗値と等しいことから，末端を開放した際には$Z_L = \infty$，$\Gamma = 1$，短絡した際には$Z_L = 0$，$\Gamma = -1$となる．
+また，負荷のインピーダンスが信号線のインピーダンスと等しい場合には，$\Gamma = 0$となり，反射は生じない．
+
+負荷としてコイルやコンデンサを接続した場合には，そのインピーダンスは周波数に依存した複素数となることから，周波数に応じて位相差$\sigma$が変化する．
+式\eqref{eq:reflection_2}から， 
+\begin{alignat}{4}
+  &\text{コイル}\quad & Z_L &= i\omega L, & |\Gamma| &= 1, & \delta &= 2\arctan\left(\frac{ Z_0}{ \omega L}\right) \\
+  &\text{コンデンサ}\quad & Z_L &= \frac{1}{i\omega C},\, & |\Gamma| &= 1,\, & \delta &= -2\arctan\left({Z_0\omega C}\right)
+\end{alignat}
+となることわかる．
+
+次に，$Z_L$の負荷が線路の途中に接続されている場合について考える．
+この場合には，反射率は次のように表される:
+\begin{equation}
+  \Gamma = -\frac{Z_0}{2Z_L + Z_0}
+\end{equation}
+また，負荷の先の線路への透過率については，
+\begin{equation}
+  T = \frac{2Z_L}{2Z_L + Z_0}
+\end{equation}
+となる．すなわち，負荷がない場合$Z_L = \infty$では 反射率$\Gamma =  0$, 透過率$T = 1$となるが，負荷がある場合には透過率は1よりも小さくなることがわかる．
 
 
+\subsection{共振回路}
+回路の大きさが波長に比べて十分小さい集中定数回路においては，コイルやコンデンサを組み合わせることで共振回路を構成することができる．
+
+$LRC$直列回路においては，回路のインピーダンス$Z$が，
+\begin{equation}
+  Z = R + i\omega L - \frac{i}{\omega C}, |Z| = \sqrt{R^2 + \left(\omega L - \frac{1}{\omega C}\right)^2}
+\end{equation}
+であることから，$\omega_0 L = 1/\omega_0 C$のとき，$|Z|$が最小となり，系に流れる電流は最大となる．
+この現象を共振と呼び，その周波数 (共振周波数) を$f_0$とすると，
+\begin{equation}
+  f_0 = \frac{\omega_0}{2\pi} = \frac{1}{2\pi\sqrt{LC}}.
+\end{equation}
+となる．
+
+回路の大きさが波長に比べて無視できないほど大きい場合には，分布定数回路と呼ばれる回路を考えることができる．
+
+例えば，長さ$d$の伝送線路の先に反射率$\Gamma$の負荷を接続した場合，距離$d$間での位相変化を無視できないことから，入力側からみた回路の特性インピーダンスは，
+\begin{equation}
+  Z_d = \frac{1+\Gamma \exp{(-2ikd)}}{1-\Gamma \exp{(-2ikd)}}Z_0
+\end{equation}
+と表され，$\Gamma$が正の実数であるとき，$|Z_d|$が最小となるのは，
+\begin{equation}
+  d = (2n + 1)\frac{\lambda}{4}, \quad (n = 0, 1, 2, \cdots)
+\end{equation}
+となるときである．
+これは自由端-固定端の共鳴と同じである．
+
+\subsection{ヘテロダイン検波}
+高周波 (搬送波) を別の周波数の信号と混合することで，情報を伝達することができる．
+混合の手法には，搬送波の振幅を変化させる振幅変調 (AM)，搬送波の周波数や位相を変化させる周波数変調 (FM)や位相変調がある
+
+ヘテロダイン検波とは，搬送波と信号を混合することで，信号の周波数を変化させる手法である．
+本実験ではダブルバランスドミキサ (DBM) を用いて，周波数混合を行った．
+周波数$f$, 位相$\delta$の高周波信号をDBMのRF端子へ入力し，LO端子には高周波信号と僅かに異なる周波数$f_L$の高精度局所信号を入力することで，IF端子には信号の積として，
+\begin{align}
+  E_\mathrm{IF} &\propto E_\mathrm{RF} E_\mathrm{LO} \nonumber \\
+  &\propto \cos\left(2\pi f t + \delta\right) \cos\left(2\pi f_L t\right) \nonumber \\
+  &\propto \cos\left(2\pi (f + f_L) t + \delta\right) + \cos\left(2\pi (f - f_L) t + \delta\right)
+\end{align}
+なる，高周波成分$f + f_L$と低周波成分$f - f_L$の混ざった信号が得られる．
+この信号をローパスフィルタで低周波成分 (中間周波数) のみを取り出すことで，高周波信号の振幅に比例し, 位相情報を含む信号 (ダウンコンバート信号)を得ることができる．
 
 \subsection{ダイポールアンテナ}
 電流が時間的に変化する導体の周りには, 電場と磁場が発生する.
@@ -323,12 +398,18 @@ Ch.1の信号振幅は468 [mV], Ch.2の信号振幅は437 [mV]であり, 最初�
 \begin{equation}
   \varepsilon_\mathrm{cable} = \left(\frac{c}{c_\mathrm{cable}}\right)^2 \approx \left(\frac{3.0 \times 10^8\,\mathrm{[m/s]}}{2.0 \times 10^8\,\mathrm{[m/s]}}\right)^2 \approx 2.3
 \end{equation}
-これは, 同軸ケーブルによく用いられる誘電体であるポリエチレンの誘電率$\varepsilon_\mathrm{PE} \approx 2.3$とほぼ一致していることが分かる.
+これは, 同軸ケーブルによく用いられる誘電体であるポリエチレンの誘電率$\varepsilon_\mathrm{PE} \approx 2.3$とよく一致していることが分かる.
 
 
 
 \subsection{オシロスコープによる測定}
 \subsubsection{方法}
+まず始めに，同軸ケーブルにおよる信号の減衰を測定するために，テキスト図17のように標準信号発生器からの信号をパワーディバイダで分割し，1 [m]と10 [m]の同軸ケーブルを介してパワーメータのA, B端子に接続した．
+パワーメータでは，A端子の電力およびA, B端子の電力比を測定することができる．
+標準信号発生器から出力 0 [dBm] の正弦波を発生させ，その周波数を変えることでA端子の信号電力とA, B端子の電力比の周波数依存性を測定した．
+
+次に，テキスト図18のように1 [m] と10 [m] 同軸ケーブルを並列に接続することで信号の重ね合わせを行った．
+このとき，先と同様に出力 0 [dBm] の正弦波を入力し，A端子で測定される電力とA, B端子の電力比の周波数依存性を測定した．
 
 \subsubsection{結果}
 
