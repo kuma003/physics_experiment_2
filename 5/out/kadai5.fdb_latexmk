@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1746549516 "out/kadai5.dvi" "out/kadai5.pdf" "out/kadai5" 1746549517
-  "out/kadai5.dvi" 1746549516 89072 57785344468c24f77c6f3f3f895a714a "latex"
+["dvipdf"] 1746549639 "out/kadai5.dvi" "out/kadai5.pdf" "out/kadai5" 1746549640
+  "out/kadai5.dvi" 1746549639 89072 2cca10d4f837d4d912aa6db6cbfd4958 "latex"
   (generated)
   "out/kadai5.pdf"
-["latex"] 1746549503 "d:/physics_experiment_2/5/kadai5.tex" "out/kadai5.dvi" "kadai5" 1746549517
+["latex"] 1746549627 "d:/physics_experiment_2/5/kadai5.tex" "out/kadai5.dvi" "kadai5" 1746549640
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1642414024 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm" 1642413561 1536 b3387106d9afecbfe14bde2de6eadf47 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm0700.tfm" 1642413561 1536 73da8e8f1d2a4c957d51ca133585586b ""
@@ -112,7 +112,7 @@
   "c:/texlive/2021/texmf-dist/web2c/texmf.cnf" 1642414962 40042 fe981136cbb5f3715ab1b0e46e3d3892 ""
   "c:/texlive/2021/texmf-var/web2c/euptex/uplatex.fmt" 1642419583 2728180 557fcff430a699b1a71249ac56f6d66d ""
   "c:/texlive/2021/texmf.cnf" 1642419451 713 e69b156964470283e0530f5060668171 ""
-  "d:/physics_experiment_2/5/kadai5.tex" 1746549502 51553 ee1c20e35bf08f50b67cc1ce0f487cb8 ""
+  "d:/physics_experiment_2/5/kadai5.tex" 1746549613 51553 ee1c20e35bf08f50b67cc1ce0f487cb8 ""
   "data/1_1/decay_ratio_vs_freq.pdf" 1746532321 5066 ece9a3a0a8a6a7f3d0f21eacaa5016e7 ""
   "data/1_1/power_ratio_vs_freq.pdf" 1746532320 5018 ee103bf333e73301da42703a1d20bf63 ""
   "data/1_1/power_vs_freq.pdf" 1746532320 5050 46b630785efb2dbcbc9d912b99736679 ""
@@ -133,9 +133,9 @@
   "data/5_3/gain.pdf" 1746547777 4856 8bdeed0d1eb5473e0e70fa57b95622b8 ""
   "data/5_3/gain2.pdf" 1746547777 5581 4b3fd54c18ed17fe37b50d9d455321fe ""
   "img/lecher_line.pdf" 1746430646 40174 2705a00febd5c02cff18bf98acee891f ""
-  "kadai5.tex" 1746549502 51553 ee1c20e35bf08f50b67cc1ce0f487cb8 ""
-  "out/kadai5.aux" 1746549516 14949 20b8a1d4c42e324a5dbc8f8509bb012b "latex"
-  "out/kadai5.out" 1746549516 2835 b4d9afeb2b5db3e7779e75684b1bcf8d "latex"
+  "kadai5.tex" 1746549613 51553 ee1c20e35bf08f50b67cc1ce0f487cb8 ""
+  "out/kadai5.aux" 1746549639 14949 20b8a1d4c42e324a5dbc8f8509bb012b "latex"
+  "out/kadai5.out" 1746549639 2835 b4d9afeb2b5db3e7779e75684b1bcf8d "latex"
   (generated)
   "out/kadai5.aux"
   "out/kadai5.dvi"
