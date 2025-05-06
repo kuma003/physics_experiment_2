@@ -42,7 +42,7 @@ p <- ggplot(data, aes(x = freq, y = a_power)) +
         x = "Frequency [MHz]",
         y = "A power [dBm]"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p,
     filename = file.path(save_dir, "power_vs_freq.pdf"),
@@ -57,14 +57,14 @@ p2 <- ggplot(data, aes(x = freq, y = power_ratio)) +
         x = "Frequency [MHz]",
         y = "B/A [dB]"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p2,
     filename = file.path(save_dir, "power_ratio_vs_freq.pdf"),
     width = 175, height = 75, unit = "mm", dpi = 300
 )
 
-p3 <- ggplot(data, aes(x = freq, y = decay_ratio)) +
+p3 <- ggplot(data, aes(x = freq, y = -decay_ratio)) +
     geom_point() +
     scale_x_log10() +
     geom_line() +
@@ -72,7 +72,7 @@ p3 <- ggplot(data, aes(x = freq, y = decay_ratio)) +
         x = "Frequency [MHz]",
         y = "Attenuation [dB/m]"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p3,
     filename = file.path(save_dir, "decay_ratio_vs_freq.pdf"),
@@ -97,7 +97,7 @@ p <- ggplot(data, aes(x = freq, y = a_power)) +
         x = "Frequency [MHz]",
         y = "A power [dBm]"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p,
     filename = file.path(save_dir, "power_vs_freq.pdf"),
@@ -111,7 +111,7 @@ p2 <- ggplot(data, aes(x = freq, y = power_ratio)) +
         x = "Frequency [MHz]",
         y = "B/A [dB]"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p2,
     filename = file.path(save_dir, "power_ratio_vs_freq.pdf"),
@@ -125,7 +125,7 @@ p3 <- ggplot(data, aes(x = freq, y = phase_delay)) +
         x = "Frequency [MHz]",
         y = "Phase difference [rad]"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p3,
     filename = file.path(save_dir, "phase_delay_vs_freq.pdf"),
@@ -142,28 +142,402 @@ ggsave(
 save_dir <- "5/data/2_1"
 if (!dir.exists(save_dir)) dir.create(save_dir)
 
-data <- read_excel(path, sheet = "exp2_3_coil_retry2")
+data <- read_excel(path, sheet = "exp2_3_coil_retry2", skip = 1)
 freq <- data$`freq [Hz]` / 1.0e6
 reflection <- data$`reflection`
 phase_difference <- data$`phase diff [rad]`
 phase_difference_calb <- data$`phase diff2 [rad]`
 phase_difference_ideal <- data$`phase diff (ideal) [rad]`
 
-p <- ggplot(data, aes(x = freq, y = reflection)) +
+df <- rbind(
+    data.frame(freq = freq, phase_difference = phase_difference, legends = "Measured"),
+    data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal")
+)
+df2 <- rbind(
+    data.frame(freq = freq, phase_difference = phase_difference, legends = "Measured"),
+    data.frame(freq = freq, phase_difference = phase_difference_calb, legends = "Calibrated"),
+    data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal")
+)
+
+p <- ggplot() +
     geom_point() +
-    scale_x_log10() +
-    geom_line() +
+    geom_line(aes(x = freq[1:5], y = reflection[1:5])) +
+    xlim(0, 100) +
+    ylim(0, 1) +
     labs(
         x = "Frequency [MHz]",
         y = "Reflection coefficient"
     ) +
-    theme_light()
+    theme_linedraw()
 ggsave(
     p,
     filename = file.path(save_dir, "reflection_vs_freq.pdf"),
     width = 175, height = 75, unit = "mm", dpi = 300
 )
 
+p2 <- ggplot(df, aes(x = freq, y = phase_difference, linetype = legends)) +
+    geom_line(color = "black") +
+    xlim(0, 100) +
+    scale_linetype_manual(
+        values = c("Measured" = "solid", "Ideal" = "dashed")
+    )+
+    labs(
+        x = "Frequency [MHz]",
+        y = "Phase difference [rad]",
+        # color = "Legend"  # 凡例のタイトル
+    ) +
+    theme_linedraw()
+ggsave(
+    p2,
+    filename = file.path(save_dir, "phase_diff.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+p3 <- ggplot(df2, aes(x = freq, y = phase_difference, linetype = legends)) +
+    geom_line(color = "black") +
+    xlim(0, 100) +
+    scale_linetype_manual(
+        values = c("Measured" = "solid", "Calibrated" = "longdash", "Ideal" = "dashed")
+    )+
+    labs(
+        x = "Frequency [MHz]",
+        y = "Phase difference [rad]",
+        # color = "Legend"  # 凡例のタイトル
+    ) +
+    theme_linedraw()
+ggsave(
+    p3,
+    filename = file.path(save_dir, "phase_diff2.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
 
 ```
 
+
+## コンデンサ
+```{r}
+save_dir <- "5/data/2_2"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp2_3_condenser_retry2", skip = 1)
+freq <- data$`freq [Hz]` / 1.0e6
+reflection <- data$`reflection`
+phase_difference <- data$`phase diff [rad]`
+phase_difference_calb <- data$`phase diff2 [rad]`
+phase_difference_ideal <- data$`phase diff (ideal) [rad]`
+
+df <- rbind(
+    data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal"),
+    data.frame(freq = freq, phase_difference = phase_difference, legends = "Measured")
+)
+df2 <- rbind(
+    data.frame(freq = freq, phase_difference = phase_difference, legends = "Measured"),
+    data.frame(freq = freq, phase_difference = phase_difference_calb, legends = "Calibrated"),
+    data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal")
+)
+
+p <- ggplot() +
+    geom_point() +
+    geom_line(aes(x = freq[1:5], y = reflection[1:5])) +
+    xlim(0, 100) +
+    ylim(0, 1) +
+    labs(
+        x = "Frequency [MHz]",
+        y = "Reflection coefficient"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "reflection_vs_freq.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+p2 <- ggplot(df, aes(x = freq, y = phase_difference, linetype = legends)) +
+    geom_line(color = "black") +
+    ylim(NA, 0) +
+    xlim(0, 100) +
+    scale_linetype_manual(
+        values = c("Measured" = "solid", "Ideal" = "dashed")
+    )+
+    labs(
+        x = "Frequency [MHz]",
+        y = "Phase difference [rad]",
+        # color = "Legend"  # 凡例のタイトル
+    ) +
+    theme_linedraw()
+ggsave(
+    p2,
+    filename = file.path(save_dir, "phase_diff.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+p3 <- ggplot(df2, aes(x = freq, y = phase_difference, linetype = legends)) +
+    geom_line(color = "black") +
+    ylim(NA, 0) +
+    xlim(0, 100) +
+    scale_linetype_manual(
+        values = c("Measured" = "solid", "Calibrated" = "longdash", "Ideal" = "dashed")
+    )+
+    labs(
+        x = "Frequency [MHz]",
+        y = "Phase difference [rad]",
+        # color = "Legend"  # 凡例のタイトル
+    ) +
+    theme_linedraw()
+ggsave(
+    p3,
+    filename = file.path(save_dir, "phase_diff2.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+```
+
+
+# 課題3
+## LC回路
+```{r}
+save_dir <- "5/data/3_1"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp3_1")
+freq <- data$`freq [MHz]`
+transparent <- data$`DUT transpalent [dB]`
+
+p <- ggplot(data, aes(x = freq, y = transparent)) +
+    geom_point() +
+    geom_line() +
+    ylim(NA, 0) +
+    labs(
+        x = "Frequency [MHz]",
+        y = "Transmittance [dB]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "transmittance.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+```
+
+## オープンスタブ
+```{r}
+save_dir <- "5/data/3_2"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp3_2")
+freq <- data$`freq [MHz]`
+filtered_data <- data[freq <= 1000, ]
+freq <- filtered_data$`freq [MHz]`
+transparent <- filtered_data$`DUT transpalent [dB]`
+
+p <- ggplot(filtered_data, aes(x = freq, y = transparent)) +
+    geom_point() +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "Transmittance [dB]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "transmittance.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+```
+
+# 課題4
+## LPF
+## オープンスタブ
+```{r}
+save_dir <- "5/data/4_1"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp4_2")
+freq <- data$`freq [MHz]`
+transmittance <- data$`T [dB]`
+transmittance_ideal <- data$`T (ideal) [dB]`
+
+df <- rbind(
+    data.frame(freq = freq, transmittance = transmittance, legends = "Measured"),
+    data.frame(freq = freq, transmittance = transmittance_ideal, legends = "Design")
+)
+
+p <- ggplot(df, aes(x = freq, y = transmittance, linetype = legends)) +
+    geom_line(color = "black") +
+    scale_linetype_manual(
+        values = c("Measured" = "solid", "Design" = "dashed")
+    )+
+    labs(
+        x = "Frequency [MHz]",
+        y = "PTransmittance [dB]",
+        # color = "Legend"  # 凡例のタイトル
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "transmittance.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+```
+
+# 課題5
+## freq
+```{r}
+save_dir <- "5/data/5_1"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp5_1")
+freq <- data$`freq [MHz]`
+filtered_data <- data[freq <= 1000, ]
+freq <- filtered_data$`freq [MHz]`
+gain <- filtered_data$`B/A [dB]`
+
+p <- ggplot(filtered_data, aes(x = freq, y = gain)) +
+    geom_point() +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "B/A [dB]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "gain.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+```
+
+
+## distance
+```{r}
+save_dir <- "5/data/5_2"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp5_2")
+distance <- data$`r [m]`
+gain <- data$`A/B [dB]`
+
+p <- ggplot(data, aes(x = distance, y = gain)) +
+    geom_point() +
+    geom_line() +
+    labs(
+        x = "Distance [m]",
+        y = "B/A [dB]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "gain.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+
+# 適用
+gain <- gain[distance >= 0.1]
+distance <- distance[distance >= 0.1]
+filtered_data <- data.frame(distance = distance, gain = gain)
+
+fit <- lm(gain ~ log10(distance), data = filtered_data)
+r2 <- summary(fit)$r.squared
+
+# プロット作成
+p <- ggplot(filtered_data, aes(x = distance, y = gain)) +
+  geom_point() +
+  geom_line(color = "black") +
+  stat_smooth(
+    aes(x = distance, y = gain),
+    method = "lm",
+    se = FALSE,
+    color = "black",
+    linetype = "dashed"
+  ) +
+  annotate("text",
+    x = min(filtered_data$distance) * 1.5,
+    y = max(filtered_data$gain) * 0.7,
+    label = paste0("R² = ", round(r2, 3)),
+    hjust = 0, vjust = 1,
+    size = 4
+  ) +
+  scale_x_log10() +
+  labs(
+    x = "Distance [m]",
+    y = "B/A [dB]"
+  ) +
+  theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "gain2.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+```
+
+## \theta
+```{r}
+save_dir <- "5/data/5_3"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp5_3")
+theta <- data$`theta [deg]`
+gain <- data$`B/A [dB]`
+gain <- gain[theta < 170]
+theta <- theta[theta < 170]
+sin <- sin(theta * pi / 180)
+data <- data.frame(theta = theta, gain = gain, sin = sin)
+
+p <- ggplot(data, aes(x = theta, y = gain)) +
+    geom_point() +
+    geom_line() +
+    ylim(NA, 0) +
+    labs(
+        x = "theta [deg]",
+        y = "B/A [dB]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "gain.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+
+fit <- lm(gain ~ log10(sin), data = data)
+r2 <- summary(fit)$r.squared
+
+# プロット作成
+p2 <- ggplot(data, aes(x = sin, y = gain)) +
+  geom_point() +
+  geom_line(color = "black") +
+  stat_smooth(
+    aes(x = sin, y = gain),
+    method = "lm",
+    se = FALSE,
+    color = "black",
+    linetype = "dashed"
+  ) +
+  annotate("text",
+    x = max(data$sin) * 0.85,
+    y = max(data$gain) * 0.7,
+    label = paste0("R² = ", round(r2, 3)),
+    hjust = 0, vjust = 1,
+    size = 4
+  ) +
+  scale_x_log10() +
+  labs(
+    x = expression(sin(theta)),
+    y = "B/A [dB]"
+  ) +
+  theme_linedraw()
+ggsave(
+    p2,
+    filename = file.path(save_dir, "gain2.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+
+```
