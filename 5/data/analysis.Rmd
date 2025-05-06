@@ -32,15 +32,49 @@ decay_ratio <- data$`減衰率 [dBm^-1]`
 
 p <- ggplot(data, aes(x = freq, y = a_power)) +
     geom_point() +
+    scale_x_log10() +
+    scale_y_continuous(limits = c(NA, 0)) +
     geom_line() +
     labs(
         x = "Frequency [MHz]",
         y = "A power [dBm]"
     ) +
     theme_light()
-ggsave(p, filename = file.path(save_dir, "power_vs_freq.pdf"), width = 250, height = 100, unit = "mm", dpi = 300)
-print(p)
+ggsave(
+    p,
+    filename = file.path(save_dir, "power_vs_freq.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
 
+p2 <- ggplot(data, aes(x = freq, y = power_ratio)) +
+    geom_point() +
+    scale_x_log10() +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "B/A [dB]"
+    ) +
+    theme_light()
+ggsave(
+    p2,
+    filename = file.path(save_dir, "power_ratio_vs_freq.pdf"), 
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+p3 <- ggplot(data, aes(x = freq, y = decay_ratio)) +
+    geom_point() +
+    scale_x_log10() +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "Attenuation [dB/m]"
+    ) +
+    theme_light()
+ggsave(
+    p3,
+    filename = file.path(save_dir, "decay_ratio_vs_freq.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
 
 
 ```
