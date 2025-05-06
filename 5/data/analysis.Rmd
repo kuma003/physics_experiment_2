@@ -134,3 +134,36 @@ ggsave(
 
 
 ```
+
+
+# 課題2
+## コイル
+```{r}
+save_dir <- "5/data/2_1"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+
+data <- read_excel(path, sheet = "exp2_3_coil_retry2")
+freq <- data$`freq [Hz]` / 1.0e6
+reflection <- data$`reflection`
+phase_difference <- data$`phase diff [rad]`
+phase_difference_calb <- data$`phase diff2 [rad]`
+phase_difference_ideal <- data$`phase diff (ideal) [rad]`
+
+p <- ggplot(data, aes(x = freq, y = reflection)) +
+    geom_point() +
+    scale_x_log10() +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "Reflection coefficient"
+    ) +
+    theme_light()
+ggsave(
+    p,
+    filename = file.path(save_dir, "reflection_vs_freq.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+
+```
+
