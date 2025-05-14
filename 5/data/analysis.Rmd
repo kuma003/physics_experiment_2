@@ -78,6 +78,8 @@ ggsave(
     filename = file.path(save_dir, "decay_ratio_vs_freq.pdf"),
     width = 175, height = 75, unit = "mm", dpi = 300
 )
+
+
 ```
 
 ```{r}
@@ -132,6 +134,20 @@ ggsave(
     width = 175, height = 75, unit = "mm", dpi = 300
 )
 
+p <- ggplot(data, aes(x = freq, y = a_power)) +
+    geom_point() +
+    geom_line() +
+    xlim(15, 20) +
+    labs(
+        x = "Frequency [MHz]",
+        y = "A power [dBm]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "power_vs_freq2.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
 
 ```
 
@@ -149,7 +165,7 @@ phase_difference <- data$`phase diff [rad]`
 phase_difference_calb <- data$`phase diff2 [rad]`
 phase_difference_ideal <- data$`phase diff (ideal) [rad]`
 
-df <- rbind(
+df1 <- rbind(
     data.frame(freq = freq, phase_difference = phase_difference, legends = "Measured"),
     data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal")
 )
@@ -158,10 +174,11 @@ df2 <- rbind(
     data.frame(freq = freq, phase_difference = phase_difference_calb, legends = "Calibrated"),
     data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal")
 )
+df = data.frame(freq = freq[1:5], reflection = reflection[1:5], legends = "Measured")
 
-p <- ggplot() +
+p <- ggplot(df, aes(x = freq, y = reflection)) +
     geom_point() +
-    geom_line(aes(x = freq[1:5], y = reflection[1:5])) +
+    geom_line() +
     xlim(0, 100) +
     ylim(0, 1) +
     labs(
@@ -175,7 +192,8 @@ ggsave(
     width = 175, height = 75, unit = "mm", dpi = 300
 )
 
-p2 <- ggplot(df, aes(x = freq, y = phase_difference, linetype = legends)) +
+p2 <- ggplot(df1, aes(x = freq, y = phase_difference, linetype = legends)) +
+    geom_point() +
     geom_line(color = "black") +
     xlim(0, 100) +
     scale_linetype_manual(
@@ -194,6 +212,7 @@ ggsave(
 )
 
 p3 <- ggplot(df2, aes(x = freq, y = phase_difference, linetype = legends)) +
+    geom_point() +
     geom_line(color = "black") +
     xlim(0, 100) +
     scale_linetype_manual(
@@ -227,7 +246,7 @@ phase_difference <- data$`phase diff [rad]`
 phase_difference_calb <- data$`phase diff2 [rad]`
 phase_difference_ideal <- data$`phase diff (ideal) [rad]`
 
-df <- rbind(
+df1 <- rbind(
     data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal"),
     data.frame(freq = freq, phase_difference = phase_difference, legends = "Measured")
 )
@@ -237,9 +256,11 @@ df2 <- rbind(
     data.frame(freq = freq, phase_difference = phase_difference_ideal, legends = "Ideal")
 )
 
-p <- ggplot() +
+df = data.frame(freq = freq[1:5], reflection = reflection[1:5], legends = "Measured")
+
+p <- ggplot(df, aes(x = freq, y = reflection)) +
     geom_point() +
-    geom_line(aes(x = freq[1:5], y = reflection[1:5])) +
+    geom_line() +
     xlim(0, 100) +
     ylim(0, 1) +
     labs(
@@ -253,8 +274,9 @@ ggsave(
     width = 175, height = 75, unit = "mm", dpi = 300
 )
 
-p2 <- ggplot(df, aes(x = freq, y = phase_difference, linetype = legends)) +
+p2 <- ggplot(df1, aes(x = freq, y = phase_difference, linetype = legends)) +
     geom_line(color = "black") +
+    geom_point() +
     ylim(NA, 0) +
     xlim(0, 100) +
     scale_linetype_manual(
@@ -274,6 +296,7 @@ ggsave(
 
 p3 <- ggplot(df2, aes(x = freq, y = phase_difference, linetype = legends)) +
     geom_line(color = "black") +
+    geom_point() +
     ylim(NA, 0) +
     xlim(0, 100) +
     scale_linetype_manual(
@@ -367,12 +390,13 @@ df <- rbind(
 
 p <- ggplot(df, aes(x = freq, y = transmittance, linetype = legends)) +
     geom_line(color = "black") +
+    geom_point() +
     scale_linetype_manual(
         values = c("Measured" = "solid", "Design" = "dashed")
     )+
     labs(
         x = "Frequency [MHz]",
-        y = "PTransmittance [dB]",
+        y = "Transmittance [dB]",
         # color = "Legend"  # 凡例のタイトル
     ) +
     theme_linedraw()
