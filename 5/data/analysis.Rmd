@@ -316,6 +316,30 @@ ggsave(
 
 ```
 
+## 位相差
+```{r}
+save_dir <- "5/data/2_3"
+if (!dir.exists(save_dir)) dir.create(save_dir)
+data <- read_excel(path, sheet = "exp2_3_IN_FWD")
+
+p <- ggplot(data, aes(x = `freq [MHz]`, y = `phase_diff`)) +
+    geom_point() +
+    ylim(3.1, NA) +
+    geom_line() +
+    labs(
+        x = "Frequency [MHz]",
+        y = "Phase difference [rad]"
+    ) +
+    theme_linedraw()
+ggsave(
+    p,
+    filename = file.path(save_dir, "phase_diff.pdf"),
+    width = 175, height = 75, unit = "mm", dpi = 300
+)
+
+
+
+```
 
 # 課題3
 ## LC回路

@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.12.3)  14 MAY 2025 09:42
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.12.3)  14 MAY 2025 12:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -584,31 +584,42 @@ File: data/2_2/phase_diff.pdf Graphic file (type pdf)
 
 
 [17]
+
+[18]
+File: data/2_3/phase_diff.pdf Graphic file (type pdf)
+<data/2_3/phase_diff.pdf>
 File: data/2_1/phase_diff2.pdf Graphic file (type pdf)
 <data/2_1/phase_diff2.pdf>
 
 
-[18]
+[19]
 File: data/2_2/phase_diff2.pdf Graphic file (type pdf)
 <data/2_2/phase_diff2.pdf>
+File: img/oscilloscope_equiv_circuit.pdf Graphic file (type pdf)
+<img/oscilloscope_equiv_circuit.pdf>
 
 
-[19]
+[20]
+File: img/oscilloscope_equiv_circuit_term.pdf Graphic file (type pdf)
+<img/oscilloscope_equiv_circuit_term.pdf>
+
+
+[21]
 File: data/3_1/transmittance.pdf Graphic file (type pdf)
 <data/3_1/transmittance.pdf>
 
 
-[20]
+[22]
 File: data/3_2/transmittance.pdf Graphic file (type pdf)
 <data/3_2/transmittance.pdf>
 
 
-[21]
+[23]
 File: img/LPF.pdf Graphic file (type pdf)
 <img/LPF.pdf>
 
 
-[22]
+[24]
 File: img/4_1_8MHz.jpg Graphic file (type bmp)
 <img/4_1_8MHz.jpg>
 File: img/4_1_10MHz.jpg Graphic file (type bmp)
@@ -617,12 +628,12 @@ File: img/4_1_11MHz.jpg Graphic file (type bmp)
 <img/4_1_11MHz.jpg>
 
 
-[23]
+[25]
 File: data/4_1/transmittance.pdf Graphic file (type pdf)
 <data/4_1/transmittance.pdf>
 
 
-[24]
+[26]
 File: img/4_3_9MHz.jpg Graphic file (type bmp)
 <img/4_3_9MHz.jpg>
 File: img/4_3_10MHz.jpg Graphic file (type bmp)
@@ -631,45 +642,45 @@ File: img/4_3_11MHz.jpg Graphic file (type bmp)
 <img/4_3_11MHz.jpg>
 
 
-[25]
+[27]
 File: img/LPF.pdf Graphic file (type pdf)
 <img/LPF.pdf>
 File: img/LPF_f_0.pdf Graphic file (type pdf)
 <img/LPF_f_0.pdf>
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 838.
+(Font)              scaled to size 5.5481pt on input line 907.
 File: img/LPF_f_inf.pdf Graphic file (type pdf)
 <img/LPF_f_inf.pdf>
 
 
-[26]
+[28]
 
-[27]
+[29]
 File: data/5_1/gain.pdf Graphic file (type pdf)
 <data/5_1/gain.pdf>
 
 
-[28]
+[30]
 File: data/5_2/gain.pdf Graphic file (type pdf)
 <data/5_2/gain.pdf>
 File: data/5_2/gain2.pdf Graphic file (type pdf)
 <data/5_2/gain2.pdf>
 
 
-[29]
+[31]
 File: data/5_3/gain.pdf Graphic file (type pdf)
 <data/5_3/gain.pdf>
 File: data/5_3/gain2.pdf Graphic file (type pdf)
 <data/5_3/gain2.pdf>
 
 
-[30]
-
-[31]
-
 [32]
 
-[33] (out/kadai5.aux)
+[33]
+
+[34]
+
+[35] (out/kadai5.aux)
  ***********
 pLaTeX2e <2023-02-14u04>+1, based on
 LaTeX2e <2024-11-01> patch level 1
@@ -679,12 +690,12 @@ Package rerunfilecheck Info: File `kadai5.out' has not changed.
 (rerunfilecheck)             Checksum: B4D9AFEB2B5DB3E7779E75684B1BCF8D;2835.
  ) 
 Here is how much of TeX's memory you used:
- 16154 strings out of 475436
- 310908 string characters out of 5771436
- 699431 words of memory out of 5000000
- 38938 multiletter control sequences out of 15000+600000
+ 16176 strings out of 475436
+ 311663 string characters out of 5771436
+ 699617 words of memory out of 5000000
+ 38956 multiletter control sequences out of 15000+600000
  628700 words of font info for 117 fonts, out of 8000000 for 9000
  41 hyphenation exceptions out of 8191
- 72i,13n,79p,459b,995s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,13n,79p,389b,995s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/kadai5.dvi (33 pages, 104128 bytes).
+Output written on out/kadai5.dvi (35 pages, 111792 bytes).

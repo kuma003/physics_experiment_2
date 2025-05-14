@@ -263,6 +263,10 @@ INPUT ./data/2_2/phase_diff.pdf
 INPUT ./data/2_2/phase_diff.pdf
 INPUT ./data/2_2/phase_diff.pdf
 INPUT extractbb -B cropbox -O data/2_2/phase_diff.pdf
+INPUT ./data/2_3/phase_diff.pdf
+INPUT ./data/2_3/phase_diff.pdf
+INPUT ./data/2_3/phase_diff.pdf
+INPUT extractbb -B cropbox -O data/2_3/phase_diff.pdf
 INPUT ./data/2_1/phase_diff2.pdf
 INPUT ./data/2_1/phase_diff2.pdf
 INPUT ./data/2_1/phase_diff2.pdf
@@ -271,6 +275,14 @@ INPUT ./data/2_2/phase_diff2.pdf
 INPUT ./data/2_2/phase_diff2.pdf
 INPUT ./data/2_2/phase_diff2.pdf
 INPUT extractbb -B cropbox -O data/2_2/phase_diff2.pdf
+INPUT ./img/oscilloscope_equiv_circuit.pdf
+INPUT ./img/oscilloscope_equiv_circuit.pdf
+INPUT ./img/oscilloscope_equiv_circuit.pdf
+INPUT extractbb -B cropbox -O img/oscilloscope_equiv_circuit.pdf
+INPUT ./img/oscilloscope_equiv_circuit_term.pdf
+INPUT ./img/oscilloscope_equiv_circuit_term.pdf
+INPUT ./img/oscilloscope_equiv_circuit_term.pdf
+INPUT extractbb -B cropbox -O img/oscilloscope_equiv_circuit_term.pdf
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0700.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm

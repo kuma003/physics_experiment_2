@@ -1,11 +1,11 @@
 # Fdb version 4
-["dvipdf"] 1747183381.76612 "out/kadai5.dvi" "out/kadai5.pdf" "out/kadai5" 1747183383.66822 0
-  "out/kadai5.dvi" 1747183381 104128 f919a86db1cd71e86b581821e14576c3 "latex"
+["dvipdf"] 1747192456.32388 "out/kadai5.dvi" "out/kadai5.pdf" "out/kadai5" 1747192457.18522 0
+  "out/kadai5.dvi" 1747192456 111792 2d0560975ce0d23b430a3eea73de206a "latex"
   (generated)
   "out/kadai5.pdf"
   (rewritten before read)
-["latex"] 1747183364.96647 "c:/Users/kuma2/Documents/pe_2/5/kadai5.tex" "out/kadai5.dvi" "kadai5" 1747183383.64809 0
-  "c:/Users/kuma2/Documents/pe_2/5/kadai5.tex" 1747183361 62619 6b5aa816c0ca91a6cb4acdcaacebff9b ""
+["latex"] 1747192448.05774 "c:/Users/kuma2/Documents/pe_2/5/kadai5.tex" "out/kadai5.dvi" "kadai5" 1747192457.17839 0
+  "c:/Users/kuma2/Documents/pe_2/5/kadai5.tex" 1747192447 67575 35d10f3e6a3b480f12cd7547e59c4f1f ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm" 1733154686 1536 b3387106d9afecbfe14bde2de6eadf47 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0700.tfm" 1733154686 1536 73da8e8f1d2a4c957d51ca133585586b ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1733154686 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -125,6 +125,7 @@
   "data/2_2/phase_diff.pdf" 1746589156 5211 abd5850a763c2946d9436cf20f0275c2 ""
   "data/2_2/phase_diff2.pdf" 1746589156 5491 add3ce789b9eb7347faab8bf8c7a6525 ""
   "data/2_2/reflection_vs_freq.pdf" 1746589156 4776 f5821a2871a9b732ea380e7942250d8e ""
+  "data/2_3/phase_diff.pdf" 1747184161 4749 2001546e9fe0014cdfc7cef72e414bd8 ""
   "data/3_1/transmittance.pdf" 1746562035 7145 1edad1de01d17ef5c88f9faf366d194e ""
   "data/3_2/transmittance.pdf" 1746562035 7252 73406efaea6883df3de6930ef69297e8 ""
   "data/4_1/transmittance.pdf" 1746589186 5871 24328ee88ffa15fc57d1b22580c7c103 ""
@@ -144,9 +145,11 @@
   "img/LPF_f_inf.pdf" 1746592744 28189 c84ce614b96ac020ebb7e25015eda27f ""
   "img/dipole_antenna.pdf" 1746588315 29784 7ac90b44a046dd62a2090be5841222ab ""
   "img/lecher_line.pdf" 1746081377 40174 2705a00febd5c02cff18bf98acee891f ""
-  "kadai5.tex" 1747183361 62619 6b5aa816c0ca91a6cb4acdcaacebff9b ""
-  "out/kadai5.aux" 1747183381 16715 18b805b15df594824fb39e9123bb86b8 "latex"
-  "out/kadai5.out" 1747183381 2835 b4d9afeb2b5db3e7779e75684b1bcf8d "latex"
+  "img/oscilloscope_equiv_circuit.pdf" 1747185574 24999 ae6f999cf4aaf11cc5c429279e9f5fb2 ""
+  "img/oscilloscope_equiv_circuit_term.pdf" 1747189558 25848 80b2d74e5df84759ae594a0ad1680a43 ""
+  "kadai5.tex" 1747192447 67575 35d10f3e6a3b480f12cd7547e59c4f1f ""
+  "out/kadai5.aux" 1747192456 17861 a84bd45fd360621ca683572e8ee16640 "latex"
+  "out/kadai5.out" 1747192456 2835 b4d9afeb2b5db3e7779e75684b1bcf8d "latex"
   (generated)
   "out/kadai5.aux"
   "out/kadai5.dvi"
