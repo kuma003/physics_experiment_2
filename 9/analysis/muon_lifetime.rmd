@@ -1,0 +1,23 @@
+---
+title: "Muon Lifetime Analysis"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(readxl)
+```
+
+```{r}
+# lead space separated file
+data <- read_xlsx("./実験データ.xlsx")
+
+```
+

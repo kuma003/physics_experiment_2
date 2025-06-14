@@ -13,10 +13,31 @@
 \usepackage{multirow}
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
-
+\usepackage{listings}
 \usepackage{enumitem}
+\usepackage{xcolor}  % 追加
 \setlist[description]{parsep=5pt}
 \setlist[enumerate]{parsep=5pt}
+
+% listingsの設定
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    captionpos=b,
+    tabsize=4,
+    showstringspaces=false
+}
+
+% リスティングの表題を変更
+\renewcommand{\lstlistingname}{Code}
 
 % 半角文字のパーセント、より右側は、コメントとして扱われます。
 
@@ -119,6 +140,17 @@
 %実験ノートに対応
 %日々の実験で何を学んで何を検証したのかまとめる。
 %装置開発まで至らなかった場合はこの項目が最重要
+\subsection{6/12 (木)}
+\subsubsection{作成したプログラム}
+本日はpythonの基本的な文法等を学習した.
+
+最終的に作成した花丸を描画するプログラムを以下に示す．
+\lstinputlisting[
+    language=Python,
+    caption={hanamaru.pyのソースコード},
+    label={lst:hanamaru}
+]{../codes/hanamaru.py}
+
 
 % 参考文献は、各課題に合わせて必要なものに書き換えること
 \begin{thebibliography}{9}
