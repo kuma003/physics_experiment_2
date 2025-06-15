@@ -3,6 +3,26 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import numpy as np
 
+# 論文用フォントとスタイル設定
+plt.rcParams.update(
+    {
+        "font.size": 12,
+        "font.family": "serif",
+        "font.serif": ["Times New Roman", "DejaVu Serif"],
+        "mathtext.fontset": "stix",
+        "axes.linewidth": 1.2,
+        "axes.labelsize": 14,
+        "axes.titlesize": 16,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "legend.fontsize": 12,
+        "figure.dpi": 300,
+        "savefig.dpi": 300,
+        "savefig.bbox": "tight",
+        "savefig.pad_inches": 0.1,
+    }
+)
+
 
 if __name__ == "__main__":
     # read command line arguments
@@ -32,9 +52,24 @@ if __name__ == "__main__":
     # fit data
 
     # plot
+    fig, ax = plt.subplots(figsize=(8, 5))
 
-    plt.plot(data["lifetime"], data["ch1"], label="Channel 1")
-    plt.plot(data["lifetime"], data["ch2"], label="Channel 2")
+    plt.plot(
+        data["lifetime"],
+        data["ch1"],
+        "o",
+        markersize=2,
+        label="Channel 1",
+        color="black",
+    )
+    plt.plot(
+        data["lifetime"],
+        data["ch2"],
+        "^",
+        markersize=2,
+        label="Channel 2",
+        color="black",
+    )
 
     # fitting
     def single_exp(t, A, tau, C):
@@ -47,7 +82,8 @@ if __name__ == "__main__":
         data["lifetime"],
         fitted_data,
         linestyle="--",
-        label=(f"Fitted Channel 1 (τ={popt[1]:.2f}±{perr[1]:.2f})"),
+        label=(f"Fitted Channel 1 (τ={popt[1]:.2f}±{perr[1]:.2f} [us])"),
+        color="#303030",  # dark gray
     )
     print("fitted parameters for channel 1:", popt, perr)
 
@@ -57,17 +93,16 @@ if __name__ == "__main__":
     plt.plot(
         data["lifetime"],
         fitted_data,
-        linestyle="--",
-        label=(f"Fitted Channel 2 (τ={popt[1]:.2f}±{perr[1]:.2f})"),
+        linestyle="-.",
+        label=(f"Fitted Channel 2 (τ={popt[1]:.2f}±{perr[1]:.2f} [us])"),
+        color="#303030",  # dark gray
     )
     print("fitted parameters for channel 2:", popt, perr)
 
-    plt.xlabel("Lifetime (us)")
+    plt.xlabel("Time [us]")
     plt.ylabel("Counts")
-    plt.title("Lifetime Measurement")
+    # plt.title("Lifetime Measurement")
     plt.legend()
     plt.grid()
-    plt.savefig("lifetime_measurement.png")
+    plt.savefig("lifetime_measurement.pdf")
     plt.show()
-
-    plt.savefig("lifetime_measurement.png", bbox_inches="tight", dpi=300, size=(12, 6))

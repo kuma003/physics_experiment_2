@@ -3,6 +3,26 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
+# 論文用フォントとスタイル設定
+plt.rcParams.update(
+    {
+        "font.size": 12,
+        "font.family": "serif",
+        "font.serif": ["Times New Roman", "DejaVu Serif"],
+        "mathtext.fontset": "stix",
+        "axes.linewidth": 1.2,
+        "axes.labelsize": 14,
+        "axes.titlesize": 16,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "legend.fontsize": 12,
+        "figure.dpi": 300,
+        "savefig.dpi": 300,
+        "savefig.bbox": "tight",
+        "savefig.pad_inches": 0.1,
+    }
+)
+
 if __name__ == "__main__":
     channels = [1, 2]
     designed_delay = np.arange(0, 1000, 105)
@@ -37,25 +57,31 @@ if __name__ == "__main__":
 
         print(f"channel {channel}: y = {coeffs[0]} * x + {coeffs[1]}")
 
+        # calculate r value
+        r = np.corrcoef(measured_delay[channel - 1], designed_delay)[0, 1]
+        print(f"channel {channel}: r = {r}")
+
+        fig, ax = plt.subplots(figsize=(8, 5))
+
         # plot
-        plt.plot(
+        ax.plot(
             measured_delay[channel - 1],
             designed_delay,
             "o",
+            color="black",
             label=f"Channel {channel}",
         )
-        plt.plot(
+        ax.plot(
             measured_delay[channel - 1],
             np.polyval(coeffs, measured_delay[channel - 1]),
+            color="black",
             label=f"Channel {channel} fit",
         )
-        plt.xlabel("Measured delay (TDC channel)")
-        plt.ylabel("Designed delay [us]")
-        plt.title("Delay calibration")
+        ax.set_xlabel("Measured delay (TDC channel)")
+        ax.set_ylabel("Designed delay [us]")
+        # ax.set_title("Delay calibration")
         # plt.xlim(0, 10)
-        plt.legend()
-        plt.grid()
+        ax.legend()
+        ax.grid()
         # save plot before showing
-        plt.savefig(f"calibration_channel_{channel}.png")
-        plt.show()
-        plt.clf()
+        plt.savefig(f"calibration_channel_{channel}.pdf")
